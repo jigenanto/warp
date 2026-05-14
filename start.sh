@@ -16,6 +16,14 @@ echo "Starting wireproxy..."
 
 sleep 5
 
+echo "Creating tinyproxy config..."
+
+cat > /tmp/tinyproxy.conf <<EOF
+Port 8888
+Timeout 600
+LogLevel Info
+EOF
+
 echo "Starting tinyproxy..."
 
-tinyproxy -d
+tinyproxy -d -c /tmp/tinyproxy.conf
