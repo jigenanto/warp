@@ -16,7 +16,7 @@ https://github.com/ViRb3/wgcf/releases/download/v2.2.26/wgcf_2.2.26_linux_amd64 
 
 RUN GOTOOLCHAIN=auto go install github.com/windtf/wireproxy/cmd/wireproxy@v1.1.2
 
-RUN cp /root/go/bin/wireproxy /app/wireproxy \
+RUN find / -name wireproxy -type f | head -n 1 | xargs -I {} cp {} /app/wireproxy \
 && chmod +x /app/wireproxy
 
 COPY start.sh .
