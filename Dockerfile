@@ -22,8 +22,10 @@ RUN find / -name wireproxy -type f | head -n 1 | xargs -I {} cp {} /app/wireprox
 COPY start.sh .
 COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
 
-RUN chmod +x start.sh
+RUN sed -i 's/\r$//' /app/start.sh
+
+RUN chmod +x /app/start.sh
 
 EXPOSE 8888
 
-CMD ["/app/start.sh"]
+CMD ["sh", "/app/start.sh"]
