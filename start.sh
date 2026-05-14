@@ -10,16 +10,8 @@ echo "Generating profile..."
 
 ./wgcf generate
 
-cat > warp.conf <<EOF
-[Interface]
-PrivateKey = $(grep PrivateKey wgcf-profile.conf | cut -d ' ' -f3)
-Address = 172.16.0.2/32
-
-[Peer]
-PublicKey = $(grep PublicKey wgcf-profile.conf | cut -d ' ' -f3)
-AllowedIPs = 0.0.0.0/0
-Endpoint = engage.cloudflareclient.com:2408
-EOF
+PRIVATE_KEY=$(grep PrivateKey wgcf-profile.conf | awk '{print $3}')
+PUBLIC_KEY=$(grep PublicKey wgcf-profile.conf | awk '{print $3}')
 
 cat > warp.json <<EOF
 {
@@ -29,7 +21,7 @@ cat > warp.json <<EOF
   "ipv6": false,
   "peers": [
     {
-      "public_key": "$(grep PublicKey wgcf-profile.conf | cut -d ' ' -f3)",
+      "public_key": "$PUBLIC_KEY",
       "endpoint": "engage.cloudflareclient.com:2408",
       "keepalive": 25,
       "allowed_ips": [
@@ -38,7 +30,7 @@ cat > warp.json <<EOF
     }
   ],
   "interface": {
-    "private_key": "$(grep PrivateKey wgcf-profile.conf | cut -d ' ' -f3)",
+    "private_key": "$PRIVATE_KEY",
     "addresses": [
       "172.16.0.2/32"
     ]
