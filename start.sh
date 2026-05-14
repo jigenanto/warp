@@ -18,4 +18,4 @@ sleep 5
 
 echo "Starting tinyproxy..."
 
-tinyproxy -d -c /etc/tinyproxy/tinyproxy.conf
+tinyproxy -d
