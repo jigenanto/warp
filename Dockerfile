@@ -14,7 +14,7 @@ https://github.com/ViRb3/wgcf/releases/download/v2.2.26/wgcf_2.2.26_linux_amd64 
 && chmod +x wgcf
 
 RUN wget -O wireproxy \
-https://github.com/octeep/wireproxy/releases/download/v1.0.9/wireproxy_linux_amd64 \
+https://github.com/wireproxy/wireproxy/releases/latest/download/wireproxy_linux_amd64 \
 && chmod +x wireproxy
 
 COPY start.sh .
