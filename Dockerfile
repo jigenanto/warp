@@ -20,7 +20,6 @@ RUN find / -name wireproxy -type f | head -n 1 | xargs -I {} cp {} /app/wireprox
 && chmod +x /app/wireproxy
 
 COPY start.sh .
-COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
 
 RUN sed -i 's/\r$//' /app/start.sh
 
