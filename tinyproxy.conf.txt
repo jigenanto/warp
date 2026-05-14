@@ -1,0 +1,12 @@
+Port 8888
+Listen 0.0.0.0
+
+Timeout 600
+
+Allow 0.0.0.0/0
+
+MaxClients 100
+
+LogLevel Info
+
+ViaProxyName "warp-proxy"
